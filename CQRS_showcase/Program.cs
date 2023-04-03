@@ -10,22 +10,24 @@ namespace CQRS_showcase
     {
         static void Main(string[] args)
         {
-            
-            // create a list of candidates
+
+            // Define an empty list of Candidate objects
             List<Candidate> candidates = new List<Candidate>();
 
-            // create a handler for the candidates
+            // Create a CandidateHandler object and pass the list of candidates to it
             CandidateHandler handler = new CandidateHandler(candidates);
 
-            // add some candidates
+            // Add a new candidate to the list of candidates using an AddCandidateCommand object
             handler.Handle(new AddCandidateCommand(candidates));
 
-            // get all candidates and console write their names
+            // Get all the candidates from the list of candidates using a GetCandidatesQuery object
             List<Candidate> allCandidates = handler.Handle(new GetCandidatesQuery(candidates));
 
-
+            // Print out the heading for the list of candidates
             Console.WriteLine("Candidates");
             Console.WriteLine("-----------------------------------------------");
+
+            // Loop through each candidate in the list of candidates and print out their name, age, and experience
             foreach (Candidate candidate in allCandidates)
             {
                 Console.WriteLine($"Name = {candidate.Name}, Age = {candidate.Age}, Experience = {candidate.Experience}");
@@ -36,32 +38,42 @@ namespace CQRS_showcase
 
             Console.WriteLine("Certificates");
             Console.WriteLine("-----------------------------------------------");
-            // create a list of certificates and add some certificates
+
+            // Define an empty list of Certificate objects
             var certificates = new List<Certificate>();
+
+            // Create a CertificateHandler object and pass the list of certificates to it
             var certificateHandler = new CertificateHandler(certificates);
+
+            // Add a new certificate to the list of certificates using an AddCertificateCommand object
             certificateHandler.Handle(new AddCertificateCommand(certificates));
 
-            // retrieve the list of certificates and print each one to the console
+            // Get all the certificates from the list of certificates using a GetCertificatesQuery object
             var query = new GetCertificatesQuery(certificates);
             var retrievedCertificates = certificateHandler.Handle(query);
 
-            
+            // Loop through each certificate in the list of certificates and print out its name and description
             foreach (var certificate in retrievedCertificates)
             {
                 Console.WriteLine($"Certificate Name: {certificate.Name}, Description: {certificate.Description}");
             }
             Console.WriteLine("-----------------------------------------------");
 
-
-            var exams = new List<Exam>(); // Assuming you have initialized and added exams to this list.
+            // Define an empty list of Exam objects
+            var exams = new List<Exam>();
+            // Create an ExamHandler object and pass the list of exams to it
             var examHandler = new ExamHandler(exams);
+            // Add a new exam to the list of exams using an AddExamCommand object
             examHandler.Handle(new AddExamCommand(exams));
 
+            // Get all the exams from the list of exams using a GetExamsQuery object
             var examquery = new GetExamsQuery(exams);
             var retrievedExams = examHandler.Handle(examquery);
 
             Console.WriteLine("Exams");
             Console.WriteLine("-----------------------------------------------");
+
+            // Loop through each exam in the list of exams and print out its name, date, and duration
             foreach (var exam in exams)
             {
                 Console.WriteLine($"Name: {exam.Name}, Date: {exam.Date.ToShortDateString()}, Duration: {exam.DurationMinutes} minutes");

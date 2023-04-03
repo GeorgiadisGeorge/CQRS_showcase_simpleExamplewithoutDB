@@ -11,15 +11,19 @@ namespace CQRS_showcase.CQRS.Handlers
 {
     public class CertificateHandler
     {
+        // Private field to hold certificates list
         private readonly List<Certificate> _certificates;
 
+        // Constructor to initialize certificates field
         public CertificateHandler(List<Certificate> certificates)
         {
             _certificates = certificates;
         }
 
+        // Method to handle AddCertificateCommand
         public void Handle(AddCertificateCommand command)
         {
+            // Create an array of certificates
             var certificates = new[]
             {
             new Certificate { Name = "C# Foundation", Description = "Certification for developing basic knowledge of dot net framework" },
@@ -27,16 +31,20 @@ namespace CQRS_showcase.CQRS.Handlers
             new Certificate { Name = "English B1", Description = "Certification for advanced English Language" }
         };
 
+            // Loop through the certificates and execute the AddCertificateCommand for each certificate
             foreach (var certificate in certificates)
             {
                 command.Execute(certificate);
             }
         }
 
+        // Method to handle GetCertificatesQuery
         public List<Certificate> Handle(GetCertificatesQuery query)
         {
+            // Execute the GetCertificatesQuery and return the result
             return query.Execute();
         }
     }
+
 
 }
