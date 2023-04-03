@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CQRS_showcase.CQRS
+namespace CQRS_showcase.CQRS.GetQueries
 {
     public class GetCandidatesQuery : IQuery<List<Candidate>>
     {

@@ -1,11 +1,13 @@
-﻿using CQRS_showcase.Models;
+﻿using CQRS_showcase.CQRS.AddCommands;
+using CQRS_showcase.CQRS.GetQueries;
+using CQRS_showcase.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CQRS_showcase.CQRS
+namespace CQRS_showcase.CQRS.Handlers
 {
     public class CandidateHandler
     {

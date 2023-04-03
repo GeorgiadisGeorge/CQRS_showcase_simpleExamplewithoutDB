@@ -1,4 +1,7 @@
 ﻿using CQRS_showcase.CQRS;
+using CQRS_showcase.CQRS.AddCommands;
+using CQRS_showcase.CQRS.GetQueries;
+using CQRS_showcase.CQRS.Handlers;
 using CQRS_showcase.Models;
 
 namespace CQRS_showcase

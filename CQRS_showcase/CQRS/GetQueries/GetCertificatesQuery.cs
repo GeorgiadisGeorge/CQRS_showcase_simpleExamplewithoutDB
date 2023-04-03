@@ -6,20 +6,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CQRS_showcase.CQRS
+namespace CQRS_showcase.CQRS.GetQueries
 {
-    public class AddCertificateCommand : ICommand<Certificate>
+    public class GetCertificatesQuery : IQuery<List<Certificate>>
     {
         private readonly List<Certificate> _certificates;
 
-        public AddCertificateCommand(List<Certificate> certificates)
+        public GetCertificatesQuery(List<Certificate> certificates)
         {
             _certificates = certificates;
         }
 
-        public void Execute(Certificate certificate)
+        public List<Certificate> Execute()
         {
-            _certificates.Add(certificate);
+            return _certificates;
         }
     }
 
