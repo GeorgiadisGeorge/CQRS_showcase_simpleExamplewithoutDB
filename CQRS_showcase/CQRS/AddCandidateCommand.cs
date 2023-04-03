@@ -1,24 +1,25 @@
 ﻿using CQRS_showcase.Interfaces;
+using CQRS_showcase.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CQRS_showcase.Models
+namespace CQRS_showcase.CQRS
 {
-    public class GetCandidatesQuery : IQuery<List<Candidate>>
+    public class AddCandidateCommand : ICommand<Candidate>
     {
         private readonly List<Candidate> _candidates;
 
-        public GetCandidatesQuery(List<Candidate> candidates)
+        public AddCandidateCommand(List<Candidate> candidates)
         {
             _candidates = candidates;
         }
 
-        public List<Candidate> Execute()
+        public void Execute(Candidate candidate)
         {
-            return _candidates;
+            _candidates.Add(candidate);
         }
     }
 }

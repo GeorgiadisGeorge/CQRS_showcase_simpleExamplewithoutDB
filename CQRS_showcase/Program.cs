@@ -1,4 +1,5 @@
-﻿using CQRS_showcase.Models;
+﻿using CQRS_showcase.CQRS;
+using CQRS_showcase.Models;
 
 namespace CQRS_showcase
 {
